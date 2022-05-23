@@ -96,10 +96,34 @@ textarea {
    }
 
    body{
+    background-color: #f2f2f2;
+  }
+
+  /*******GLOBALES******/
+
+  h2{
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .contenedor{
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  @media only screen and (min-width: 768px){
+    .contenedor{
+      width: 90%;
+    }
+  }
+
+  /*******HERO******/
+
+  div.hero{
     background-image: url(../img/encabezado.jpg);
     height: 100vh;
     background-position: top center;
     background-size: cover;
+    font-family: 'Open Sans', sans-serif;
   }
 
   div.contenido-header{
@@ -127,6 +151,8 @@ textarea {
   }
 
   div.informacion-evento{
+    width: 90%;
+    margin: 40% auto;
     text-align: center;
     color: #ffffff;
   }
@@ -147,6 +173,8 @@ textarea {
 
   div.informacion-evento p i{
     color: #fe4918;
+    margin-right: 5px;
+    font-size: 2rem;
   }
 
   div.informacion-evento p.fecha{
@@ -157,6 +185,96 @@ textarea {
     float: right;
     text-align: right;
   }
+
+  h1.nombre-sitio{
+    font-size: 10.5vw;
+    font-family: 'PT Sans', sans-serif;
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  p.slogan{
+    font-size: 1.5rem;
+    text-transform: none;
+  }
+
+  p.slogan span{
+    font-weight: bold;
+  }
+
+  @media only screen and (min-width: 768px) {
+    h1.nombre-sitio{
+      font-size: 10.6vw;
+    }
+  }
+
+  /*******BARRA DE NAVEGACION*******/
+
+  div.barra{
+    background-color: #353535;
+    padding: 20px 0;
+  }
+
+  div.menu-movil{
+    display: none;
+  }
+
+  div.logo{
+    width: 80%;
+  }
+
+  div.logo img{
+    width: 100%;
+  }
+
+  @media only screen and (min-width:768px){
+    div.logo{
+      width: 33%;
+      float: left;
+    }
+  }
+
+  nav.navegacion-principal{
+    display: none;
+  }
+
+  @media only screen and (min-width: 768px){
+    nav.navegacion-principal{
+      width: 67%;
+      float: right;
+      text-align: right;
+      display: block;
+    }
+  }
+
+  nav.navegacion-principal a{
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    padding: 10px;
+    display: inline-block;
+    transition: all .6s ease;
+  }
+
+
+  nav.navegacion-principal a:hover{
+    background-color: #fe4918;
+  }
+
+  nav.navegacion-principal a:last-child{
+    color: #fe4918;
+    border: 1px solid #fe4918;
+  }
+
+  nav.navegacion-principal a:last-child:hover{
+    color: #ffffff;
+  }
+
+  
+
 
   
 /* ==========================================================================
