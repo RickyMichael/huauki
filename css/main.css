@@ -91,22 +91,26 @@ textarea {
      box-sizing: border-box;
    }
 
-   *, *::before, *::after{
+   *, *:before, *:after{
     box-sizing: inherit;
    }
 
    body{
     background-color: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
   }
 
   /*******GLOBALES******/
 
   h2{
     font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2em;
   }
 
   .contenedor{
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
   }
 
@@ -114,6 +118,24 @@ textarea {
     .contenedor{
       width: 90%;
     }
+  }
+
+  .seccion{
+    padding: 30px 0;
+  }
+
+  h2::after{
+    content: '';
+    margin: 0 auto;
+    background-image: url(../img/separador.png);
+    height: 30px;
+    width: 100px;
+    display: block;
+  }
+
+  .seccion p{
+    text-align: center;
+    font-size: 1.2em;
   }
 
   /*******HERO******/
@@ -216,12 +238,9 @@ textarea {
     padding: 20px 0;
   }
 
-  div.menu-movil{
-    display: none;
-  }
-
   div.logo{
     width: 80%;
+    float: left;
   }
 
   div.logo img{
@@ -237,15 +256,7 @@ textarea {
 
   nav.navegacion-principal{
     display: none;
-  }
-
-  @media only screen and (min-width: 768px){
-    nav.navegacion-principal{
-      width: 67%;
-      float: right;
-      text-align: right;
-      display: block;
-    }
+    /*width: 100%;*/
   }
 
   nav.navegacion-principal a{
@@ -254,11 +265,11 @@ textarea {
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1.3rem;
-    padding: 10px;
-    display: inline-block;
     transition: all .6s ease;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
   }
-
 
   nav.navegacion-principal a:hover{
     background-color: #fe4918;
@@ -271,6 +282,52 @@ textarea {
 
   nav.navegacion-principal a:last-child:hover{
     color: #ffffff;
+  }
+
+  @media only screen and (min-width: 768px){
+    nav.navegacion-principal{
+      width: 67%;
+      float: right;
+      text-align: right;
+      display: block;
+    }
+
+    nav.navegacion-principal a{
+      padding: 10px 5px;
+      width: auto;
+      display: inline-block;
+      text-align: center;
+      margin: 0 10px 0 0;
+    }
+  }
+
+ 
+
+  /**********BARRA MOVIL*********/
+
+  div.menu-movil{ 
+    width: 60px;
+    display: block;
+    float: right;
+    text-align: right;
+    margin-top: 12px;
+  }
+
+  div.menu-movil:hover{
+    cursor: pointer;
+  }
+
+  div.menu-movil span{
+    height: 8px;
+    margin-bottom: 5px;
+    display: block;
+    background-color: #ffffff;
+  }
+
+  @media only screen and (min-width: 768px){
+    div.menu-movil{
+      display: none;
+    }
   }
 
   
