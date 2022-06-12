@@ -144,7 +144,7 @@ textarea {
   }
 
   .button{
-    display: block;
+    display: inline-block;
     background-color: #fe4918;
     padding: 5px 10px;
     text-transform: uppercase;
@@ -498,6 +498,312 @@ textarea {
     bottom: -80px;
     opacity: 0;
   }
+
+  /***************PARALLAX CONTADOR*****************/
+
+
+  div.contador{
+    position: relative;
+    height: auto;
+  }
+
+  div.parallax::before{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: '';
+    background-image: url(../img/bg-resumen.jpg);
+    background-attachment: fixed;
+    filter: brightness(0.6);
+  }
+
+  ul.resumen-evento{
+    position: relative;
+    padding: 120px 0;
+  }
+
+  ul.resumen-evento li{
+    float: left;
+    width: 50%;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+
+  @media only screen and (min-width: 768px){
+    ul.resumen-evento li{
+      width: 25%;
+    }
+  }
+
+  p.numero{
+    color: #fe4918;
+    font-size: 3.5em;
+    margin: 0;
+    display: block;
+  }
+
+  /*************TABLA PRECIO**************/
+
+  ul.lista-precios > li{
+    padding: 20px;
+  }
+
+  @media only screen and (min-width: 768px){
+    ul.lista-precios > li{
+      float: left;
+      width: 33.3%;
+    }
+  }
+
+  div.tabla-precio{
+    border: 2px solid #e1e1e1;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #ffffff;
+    transition: all 0.6s ease;
+  }
+
+  div.tabla-precio:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 0px 50px #666;
+  }
+
+  div.tabla-precio ul li{
+    margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
+    color: #868686;
+    text-transform: uppercase;
+  }
+
+  div.tabla-precio ul li::before{
+    font-family: 'FontAwesome';
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 5px;
+    font-size: 20px;
+    color: green;
+    -webkit-font-smoothing: antialiased;
+    content: '\f00c';
+    font-weight: bold;
+  }
+
+  div.tabla-precio h3{
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1em;
+  }
+
+  div.tabla-precio p{
+    color: #000000;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .button.hollow, .button.hollow:hover{
+    background-color: #ffffff;
+    color: #fe4918;
+    border: 1px solid #fe4918;
+  }
+
+  /******************MAPA********************/
+  div.mapa{
+    height: 420px;
+    background-color: green;
+  }
+
+  /***************TESTIMONIALES*****************/
+
+  div.testimoniales{
+    padding-bottom: 20px;
+  }
+
+  @media only screen and (min-width: 768px){
+    div.testimonial{
+      width: 33.3%;
+      float: left;
+    }
+  }
+  
+  div.testimonial{
+    padding: 5px;
+  }
+
+  blockquote{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    margin: 0 0 10px 0;
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  blockquote p{
+    font-size: 1em!important;
+    text-align: justify!important;
+    font-family: 'PT Sans', sans-serif;
+    padding: 0 20px 0px 60px;
+  }
+
+  blockquote p::before{
+    content: '\201c';
+    position: absolute;
+    left: 30px;
+    top: 5px;
+    font-size: 4em;
+    color: #fe4918;
+  }
+
+  footer.info-testimonial{
+    padding: 0;
+  }
+
+  footer.info-testimonial img{
+    float: left;
+    border-radius: 50%;
+    width: 25%;
+    /*margin: 0 10px 20px 30px;*/
+    margin-left: 20px;
+  }
+
+  footer.info-testimonial cite{
+    text-align: left;
+    text-transform: uppercase;
+    color: #fe4918;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    width: 66.6%;
+    float: right;
+    padding-top: 15px;
+    font-style: normal;
+  }
+
+  footer.info-testimonial cite span{
+    text-transform: capitalize;
+    display: block;
+    color: #000000;
+  }
+
+  /******************NEWSLETTER*******************/
+
+  div.newsletter{
+    position: relative;
+    height: auto;
+  }
+
+  div.newsletter::before{
+    content: '';
+    background-image: url(../img/bg-newsletter.jpg);
+  }
+
+  div.contenido{
+    padding: 100px 0;
+    position: relative;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  div.contenido p{
+    margin: 0;
+  }
+
+  div.contenido h3{
+    font-size: 7vw;
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  .button.transparente{
+    background-color: transparent;
+    border: 2px solid #ffffff;
+  }
+
+  .button.transparente:hover{
+    background-color: #fe4918;
+    border: 2px solid #fe4918;
+  }
+
+  /****************CUENTA REGRESIVA*******************/
+  div.cuenta-regresiva{
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  @media only screen and (min-width: 768px){
+    div.cuenta-regresiva ul li{
+      float: left;
+      width: 25%;
+    }
+  }
+
+  div.cuenta-regresiva ul li{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+
+  /*******************SITE-FOOTER*******************/
+
+  @media only screen and (min-width: 768px){
+    div.contenedor div{
+      float: left;
+      width: 33.3%;
+    }
+  }
+
+  footer.site-footer{
+    margin-top: 20px;
+    background-color: #353535;
+    padding-top: 20px;
+  }
+
+  div.contenedor > div{
+    padding: 0 20px;
+    color: #ffffff;
+    text-align: justify;
+    font-size: 0.8em;
+  }
+
+  div.contenedor div h3{
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6em;
+  }
+
+  div.titulo h3 span{
+    color: #ffffff;
+  }
+
+  div.ultimos-tweets ul li{
+    font-size: 0.75em;
+    margin-bottom: 10px;
+  }
+
+  div.menu nav{
+    text-align: left;
+  }
+
+  p.copyright{
+    margin: 0;
+    color: #ffffff;
+    background-color: #2e2e2e;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
