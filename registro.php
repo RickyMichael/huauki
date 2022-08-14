@@ -2,7 +2,7 @@
 
   <section class="seccion contenedor">
       <h2>registro</h2>
-      <form action="index.html" method="post" id="registro" class="registro">
+      <form action="validad_registro.php" method="post" id="registro" class="registro">
           <div id="datos-usuario" class="registro caja clearfix">
               <div class="campo">
                 <label for="name">Nombre:</label>
@@ -33,7 +33,7 @@
                   </ul>
                   <div class="orden">
                       <label for="pase_dia">Boletos deseados</label>
-                      <input type="number" name="pase_dia" id="pase_dia" class="pase_dia" min="0" placeholder="0">
+                      <input type="number" name="boletos[]" id="pase_dia" class="pase_dia" min="0" placeholder="0">
                   </div>
                 </div><!--tabla-precio-->
               </li>
@@ -49,7 +49,7 @@
                   </ul>
                   <div class="orden">
                       <label for="pase_completo">Boletos deseados</label>
-                      <input type="number" name="pase_completo" id="pase_completo" class="pase_completo" min="0" placeholder="0">
+                      <input type="number" name="boletos[]" id="pase_completo" class="pase_completo" min="0" placeholder="0">
                   </div>
                 </div>
               </li>
@@ -65,7 +65,7 @@
                   </ul>
                   <div class="orden">
                       <label for="pase_dosdia">Boletos deseados</label>
-                      <input type="number" name="pase_dosdia" id="pase_dosdia" class="pase_dosdia" min="0" placeholder="0">
+                      <input type="number" name="boletos[]" id="pase_dosdia" class="pase_dosdia" min="0" placeholder="0">
                   </div>
                 </div>
               </li>
@@ -160,9 +160,9 @@
                         <label for="regalo">Seleccione un regalo</label>
                         <select name="regalo" id="regalo" class="regalo">
                             <option value="">-Seleccione un regalo-</option>
-                            <option value="ETI">Etiquetas</option>
-                            <option value="PUL">Pulseras</option>
-                            <option value="PLU">Plumas</option>
+                            <option value="2">Etiquetas</option>
+                            <option value="1">Pulseras</option>
+                            <option value="3">Plumas</option>
                         </select>
                     </div><!--orden-->
                     <input type="button" class="button" id="calcular" value="calcular">
@@ -176,7 +176,8 @@
                     <div id="suma-total">
 
                     </div>
-                    <input type="submit" class="button" id="btnRegistro" value="Pagar">
+                    <input type="hidden" name="total_pedido" id="total_pedido">
+                    <input type="submit" name="submit" class="button" id="btnRegistro" value="Pagar">
                 </div><!--total-->
             </div><!--caja-->
         </div><!--resumen-->

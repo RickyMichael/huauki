@@ -3,16 +3,7 @@
     "use strict";
     document.addEventListener('DOMContentLoaded', function(){
 
-        //Mapa
-        let map = L.map('mapa').setView([-11.9396460940131, -76.9734741998006], 19);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        L.marker([-11.9396460940131, -76.9734741998006]).addTo(map)
-        .bindPopup('Ricky Michael Salazar.<br> House.')
-        .openPopup();
+        
 
         //Variables
         /*let nombre = document.getElementById('nombre');
@@ -31,6 +22,9 @@
         let suma_total = document.getElementById('suma-total');
         let calcular = document.getElementById('calcular');
         let btnRegistro = document.getElementById('btnRegistro');
+        let total_pedido = document.getElementById('total_pedido');
+         
+        btnRegistro.disabled = true;
         if(document.getElementById('regalo')){
             calcular.addEventListener('click', calcularMontos);
             pase_dia.addEventListener('blur', diasElegidos);
@@ -81,7 +75,11 @@
                 }
 
                 suma_total.innerHTML = "S/" + totalPagar.toFixed(2);
+                total_pedido.value = totalPagar;
+                btnRegistro.disabled = false;
             }
+
+                
         }
 
     
@@ -143,6 +141,24 @@
 
 $(function(){
 
+    //Mapa
+    let map = L.map('mapa').setView([-11.9396460940131, -76.9734741998006], 19);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([-11.9396460940131, -76.9734741998006]).addTo(map)
+    .bindPopup('Ricky Michael Salazar.<br> House.')
+    .openPopup();
+
+    /*AGREGAR CLASE ACTIVO */
+
+    $('body.invitados .navegacion-principal a:contains("Invitados")').addClass('activo');
+    $('body.conferencia .navegacion-principal a:contains("Conferencia")').addClass('activo');
+    $('body.calendario .navegacion-principal a:contains("Calendario")').addClass('activo');
+
+    /*BARRA MENU */
     $('.menu-movil').on('click', function(){
         $('.navegacion-principal').slideToggle(1000);
     });
@@ -180,5 +196,8 @@ $(function(){
         $('#minutos').html(event.strftime('%M'));
         $('#segundos').html(event.strftime('%S'));
     });
+
+    /*COLORBOX*/
+    $('.info-invitado').colorbox({inline:true, width:"50%"});
     
 });

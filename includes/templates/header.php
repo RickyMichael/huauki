@@ -20,11 +20,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald:wght@300&family=PT+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <link rel="stylesheet" href="css/main.css">
-
+  <?php 
+    $archivo = basename($_SERVER['PHP_SELF']);
+    $pagina = str_replace(".php", "", $archivo);
+    if($pagina == 'invitados'){
+      echo '<link rel="stylesheet" href="css/colorbox.css">';
+    }else if($pagina == 'conferencia'){
+      echo '<link rel="stylesheet" href="css/lightbox.css">';
+    }
+   ?>
   <meta name="theme-color" content="#fafafa">
+  
 </head>
 
-<body>
+<body class="<?php echo $pagina; ?>">
 
   <!-- Add your site or application content here -->
   <header class="site-header">
@@ -65,9 +74,9 @@
       </div>
 
       <nav class="navegacion-principal clearfix">
-        <a href="conferencia.php">conferencia</a>
+        <a href="conferencia.php">Conferencia</a>
         <a href="calendario.php">Calendario</a>
-        <a href="#">Invitado</a>
+        <a href="invitados.php">Invitados</a>
         <a href="registro.php">Reservaciones</a>
       </nav>
       

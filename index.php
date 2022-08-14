@@ -21,11 +21,79 @@
       <div class="contenedor">
         <div class="programa-evento">
           <h2>programa del evento</h2>
+          <?php 
+            try{
+              require_once('includes/funciones/bd_conexion.php');
+              $sql = " SELECT * FROM categoria_evento";
+              $resultado = $conn->query($sql);
+            }catch(\Exception $e){
+              echo $e->getMessage();
+            }
+          ?>
           <nav class="menu-programa">
-            <a href="#talleres"><i class="fa fa-code" aria-hidden="true"></i>Talleres</a>
-            <a href="#conferencias"><i class="fa fa-comment" aria-hidden="true"></i>conferencias</a>
-            <a href="#seminarios"><i class="fa fa-university" aria-hidden="true"></i>Seminarios</a>
+            <?php while($cat = $resultado->fetch_assoc()){ ?>
+              <?php $categoria = $cat['cat_evento']; ?>
+              <a href="#<?php echo strtolower($categoria); ?>"><i class="fa <?php echo $cat['icono']; ?>" aria-hidden="true"></i><?php echo $categoria; ?></a>
+            <?php } ?>
+            <!--<a href="#conferencias"><i class="fa fa-comment" aria-hidden="true"></i>conferencias</a>
+            <a href="#seminarios"><i class="fa fa-university" aria-hidden="true"></i>Seminarios</a>-->
           </nav>
+          <?php
+            try{
+              require_once("includes/funciones/bd_conexion.php");
+              $sql = " SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, icono, ";
+              $sql .= " nombre_invitado, apellido_invitado FROM eventos ";
+              $sql .= " INNER JOIN categoria_evento ON eventos.id_categoria = categoria_evento.id_categoria ";
+              $sql .= " INNER JOIN invitados ON eventos.invitado_id = invitados.invitado_id ";
+              $sql .= " AND eventos.id_categoria = 1";
+              $sql .= " ORDER BY evento_id LIMIT 2;";
+              $sql .= " SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, icono, ";
+              $sql .= " nombre_invitado, apellido_invitado FROM eventos ";
+              $sql .= " INNER JOIN categoria_evento ON eventos.id_categoria = categoria_evento.id_categoria ";
+              $sql .= " INNER JOIN invitados ON eventos.invitado_id = invitados.invitado_id ";
+              $sql .= " AND eventos.id_categoria = 2";
+              $sql .= " ORDER BY evento_id LIMIT 2;";
+              $sql .= " SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, icono, ";
+              $sql .= " nombre_invitado, apellido_invitado FROM eventos ";
+              $sql .= " INNER JOIN categoria_evento ON eventos.id_categoria = categoria_evento.id_categoria ";
+              $sql .= " INNER JOIN invitados ON eventos.invitado_id = invitados.invitado_id ";
+              $sql .= " AND eventos.id_categoria = 3";
+              $sql .= " ORDER BY evento_id LIMIT 2;";
+            }catch(\Exception $e){
+              echo $e->getMessage();
+            }
+          ?>
+
+          <?php $conn->multi_query($sql); ?>
+          
+          <?php 
+            do{
+              $resultado = $conn->store_result();
+              $row = $resultado->fetch_all(MYSQLI_ASSOC);
+            ?>
+            <?php $i = 0; ?>
+            <?php foreach($row as $evento): ?>
+              <?php if($i % 2 == 0) {?>
+                <div id="<?php echo strtolower($evento['cat_evento']); ?>" class="info-curso ocultar clearfix">
+              <?php } ?>
+                  <div class="detalle-evento">
+                    <h3><?php echo $evento['nombre_evento']; ?></h3>
+                    <p><i class="fa fa-clock" aria-hidden="true"></i><?php echo $evento['hora_evento']; ?></p>
+                    <p><i class="fa fa-calendar" aria-hidden="true"></i><?php echo $evento['fecha_evento']; ?></p>
+                    <p><i class="fa fa-user" aria-hidden="true"></i><?php echo $evento['nombre_invitado'] . ' ' . $evento['apellido_invitado']; ?></p>
+                  </div>
+              <?php if($i % 2 == 1): ?>
+                  <a href="calendario.php" class="button float-right">Ver Todos</a>
+                  </div><!--talleres-->
+              <?php endif ?>    
+                    
+              <?php $i++; ?>
+            <?php endforeach; ?>
+            <?php $resultado->free(); ?>
+          <?php  
+            }while($conn->more_results() && $conn->next_result());
+          ?>
+
           <div id="talleres" class="info-curso ocultar clearfix">
             <div class="detalle-evento">
               <h3>HTML5, CSS3 Y JavaScript</h3>
@@ -33,44 +101,9 @@
               <p><i class="fa fa-calendar" aria-hidden="true"></i>10 de Dic</p>
               <p><i class="fa fa-user" aria-hidden="true"></i>Juan Pablo de la Torre</p>
             </div>
-            <div class="detalle-evento">
-              <h3>Responsive Web Design</h3>
-              <p><i class="fa fa-clock" aria-hidden="true"></i>10:00 hrs</p>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i>10 de Dic</p>
-              <p><i class="fa fa-user" aria-hidden="true"></i>Juan Pablo de la Torre</p>
-            </div>
+            
               <a href="#" class="button float-right">Ver Todos</a>
-          </div><!--talleres-->
-          <div id="conferencias" class="info-curso ocultar clearfix">
-            <div class="detalle-evento">
-              <h3>HTML5, CSS3 Y JavaScript</h3>
-              <p><i class="fa fa-clock" aria-hidden="true"></i>14:00 hrs</p>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i>10 de Dic</p>
-              <p><i class="fa fa-user" aria-hidden="true"></i>Juan Pablo de la Torre</p>
-            </div>
-            <div class="detalle-evento">
-              <h3>Responsive Web Design</h3>
-              <p><i class="fa fa-clock" aria-hidden="true"></i>10:00 hrs</p>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i>10 de Dic</p>
-              <p><i class="fa fa-user" aria-hidden="true"></i>Juan Pablo de la Torre</p>
-            </div>
-              <a href="#" class="button float-right">Ver Todos</a>
-          </div><!--talleres-->
-          <div id="seminarios" class="info-curso ocultar clearfix">
-            <div class="detalle-evento">
-              <h3>HTML5, CSS3 Y JavaScript</h3>
-              <p><i class="fa fa-clock" aria-hidden="true"></i>14:00 hrs</p>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i>10 de Dic</p>
-              <p><i class="fa fa-user" aria-hidden="true"></i>Juan Pablo de la Torre</p>
-            </div>
-            <div class="detalle-evento">
-              <h3>Responsive Web Design</h3>
-              <p><i class="fa fa-clock" aria-hidden="true"></i>10:00 hrs</p>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i>10 de Dic</p>
-              <p><i class="fa fa-user" aria-hidden="true"></i>Juan Pablo de la Torre</p>
-            </div>
-              <a href="#" class="button float-right">Ver Todos</a>
-          </div><!--talleres-->    
+          </div><!--talleres--> 
         </div><!--programa-evento-->
       </div><!--contenedor-->
     </div><!--contenido-programa-->
@@ -220,6 +253,8 @@
       <a href="#" class="button transparente">Registro</a>
     </div><!--contenido-->
   </div><!--newsletter-->
+
+
 
   <section class="seccion">
     <h2>Faltan</h2>
